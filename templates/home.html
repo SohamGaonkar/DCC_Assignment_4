@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/static/styles.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+
+</head>
+<body>
+    <div class="container mt-5">
+        <h1 class="text-center mb-4">Filtering by bond number!</h1>
+        <form class="form-inline justify-content-center mb-4" method="post" action="/">
+            <label class="sr-only" for="Bond_number">Enter Bond Number:</label>
+            <input type="text" class="form-control mr-2" id="Bond_number" name="Bond_number" placeholder="Enter Bond number"  value="{{ bond_number }}">
+            <button type="submit" class="btn btn-primary" id ="submit-btn">Search</button>        
+        </form>
+        
+        <!-- <form class="form-inline justify-content-center mb-4" method="post" action="/">
+            <label class="sr-only" for="Company_name">Select Company Name:</label>
+            <select class="form-control mr-2" id="Company_name" name="Company_name">
+                <option value="">Select Company Name</option>
+                {% for company in company_names %}
+                <option value="{{ company }}">{{ company }}</option>
+                {% endfor %}
+            </select>
+            <button type="submit" class="btn btn-primary" id="submit-btn">Search</button>        
+        </form> -->
+
+        <!-- <div class="table_static"  style="display:none">
+            {% if static_data %}
+                <table class="table table-striped">
+                    
+                    <thead class="thead-dark">
+                        <tr>
+                            {% for header in headers %}
+                            <th>{{ header }}</th>
+                            {% endfor %}
+                        </tr>
+                    </thead>
+            
+                    <tbody>
+                        {% for row in static_data %}
+                        <tr>
+                            {% for cell in row %}
+                            <td>{{ cell }}</td>
+                            {% endfor %}
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table> -->
+                <!-- Pagination dropdown
+                {% if total_pages > 1 %}
+                <nav aria-label="Page navigation">
+                    <div class="row justify-content-center">
+                        <div class="col-md-6">
+                            <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                    <label class="input-group-text" for="page-select">Page</label>
+                                </div>
+                                Here, we create a dropdown menu (<select>) for selecting pages.-->
+                                <!-- <select class="custom-select" id="page-select" onchange="window.location.href=this.value">
+                                    {% for page_num in range(1, total_pages + 1) %}
+                                    <option value="?page={{ page_num }}" {% if page_num == current_page %}selected{% endif %}>{{ page_num }}</option>
+                                    URL query string parameter for selecting the respective page.-->
+                                    <!-- {% endfor %} -->
+                                    <!--We use Jinja templating to conditionally mark the option corresponding to the current page as selected.
+                                    If page_num equals current_page, we add the selected attribute to the option.-->
+                                <!-- </select>
+                            </div>
+                        </div>
+                    </div>
+                </nav> -->
+                <!-- {% endif %}
+            {% endif %}
+        </div> -->
+        
+        {% if responsive_data %}
+        <div class="table-responsive">
+            <table class="table table-striped">
+                <thead class="thead-dark">
+                    <tr>
+                        {% for header in headers %}
+                        <th>{{ header }}</th>
+                        {% endfor %}
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for row in responsive_data %}
+                    <tr>
+                        {% for cell in row %}
+                        <td>{{ cell }}</td>
+                        {% endfor %}
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        {% else %}
+        <div class="alert alert-danger text-center" role="alert">
+            No data found for the entered bond number.
+        </div>
+        {% endif %}
+    </div>
+
+    
+
+    </div>
+    
+
+</body>
+</html>
